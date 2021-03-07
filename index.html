@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js.js"></script>
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link rel="stylesheet" href="styles.css">
+    <title>YT Thumb</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="container menu">
+                <a href="" class="logo">YT Thumb</a>
+                <div class="menu">
+                    <a href="javascript:0===window.location.href.indexOf('http://ytthumb.local')||window.open('http://ytthumb.local/?url='+location.href+'?src=bookmarklet');" title="ytthumb" onclick="extension();return false;">YT Thumb</a>
+                    <a href=" #help" class="">Help</a>
+                </div>
+            </div>
+        </div>
+        <div class="url">
+            <div class="container url-content">
+                <h1> Youtube thumbnail downloader</h1>
+                <input class="" placeholder="Paste youtube link here" type="text" id="videoId" onpaste="cleanUp(), updateIt()" onchange="cleanUp()" autofocus>
+                <div class="button">
+                    <button class="submit" onclick="app()" id="but"> Submit </button>
+                    <!--<button class="clear" onclick="cleanUp()"> Clear </button>-->
+                </div>
+            </div>
+        </div>
+        <div class="divider">
+            <div class="custom-shape-divider-bottom-1614607147">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <article>
+        <div class="container" id="thumbnails">
+
+        </div>
+    </article>
+    <div class="content">
+        <div class="container" id="help">
+            <div>
+                <h2>Use of this tool</h2>
+                <p>Download youtube videos thumbnail in HD quality for free. You can download any YT&nbspvideo thumbnail online, no software need to download or install.</p>
+            </div>
+            <div>
+                <h2>How to download thumbnail</h2>
+                <p>To download just paste the youtube video url in the above input box and click on Submit button.</p>
+                <p>Now you can see different size of thumbnails. You can click on any thumbnail to save that thumbnail in your mobile or computer.</p>
+            </div>
+        </div>
+        <div class="extension" id="extension">
+            <div class="container">
+                <h2>How to use Extension</h2>
+                <p>You can drag and drop <strong>YT Thumb</strong> logo to your bookmarks bar. If your browser bookmarks bar is hidden, then press
+                    <strong>Ctrl&nbsp+&nbspShift&nbsp+&nbspb</strong> on Windows or
+                    <strong>⌘&nbsp+&nbspOption&nbsp+&nbspb</strong> on Mac to show bookmarks bar or save the link as a bookmark.
+                </p>
+                <p>Now when you are on a youtube video and want to download that video thumbnail, simply click on the bookmark.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var input = document.getElementById("videoId ");
+        input.addEventListener("keyup ", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("but ").click();
+            }
+        });
+
+        function extension() {
+            window.location.href = "#extension ";
+        }
+        /*var id = location.search.split('url=')[1];
+        id = id.split('?src=')[0];
+        console.log(id);*/
+
+        var url = location.search.split('url=')[1];
+        url = url.split('?src=')[0];
+        console.log(url);
+        var reg = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        if (url.match(reg)) {
+            generateImage(url);
+        }
+    </script>
+</body>
+
+</html>
