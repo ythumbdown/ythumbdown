@@ -25,7 +25,7 @@
             <div class="container menu">
                 <a href="" class="logo">YThumb Down</a>
                 <div class="menu">
-                    <a href="javascript:0===window.location.href.indexOf('https://ythumbdown.github.io/ythumbdown')||window.open('https://ythumbdown.github.io/ythumbdown/?url='+location.href+'?src=bookmarklet');" title="ytthumb" onclick="extension();return false;">YThumb Down</a>
+                    <a href="javascript:0===window.location.href.indexOf('https://ythumbdown.github.io/ythumbdown')||window.open('https://ythumbdown.github.io/ythumbdown//?url='+location.href+'?src=bookmarklet');" title="ytthumb" onclick="extension();return false;">YThumb Down</a>
                     <a href=" #help" class="">Help</a>
                 </div>
             </div>
@@ -79,27 +79,28 @@
         </div>
     </div>
     <script>
-        var input = document.getElementById("videoId ");
-        input.addEventListener("keyup ", function(event) {
+        var input = document.getElementById("videoId");
+        input.addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
-                document.getElementById("but ").click();
+                document.getElementById("but").click();
             }
         });
 
         function extension() {
-            window.location.href = "#extension ";
+            window.location.href = "#extension";
         }
         /*var id = location.search.split('url=')[1];
         id = id.split('?src=')[0];
         console.log(id);*/
-
-        var url = location.search.split('url=')[1];
-        url = url.split('?src=')[0];
-        console.log(url);
-        var reg = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-        if (url.match(reg)) {
-            generateImage(url);
+        if (location.search.split('url=')[1]) {
+            var url = location.search.split('url=')[1];
+            url = url.split('?src=')[0];
+            console.log(url);
+            var reg = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            if (url.match(reg)) {
+                generateImage(url);
+            }
         }
     </script>
 </body>
