@@ -97,7 +97,7 @@
         if (location.search.split('url=')[1]) {
             var url = location.search.split('url=')[1];
             url = url.split('?src=')[0];
-            console.log(url);
+            
             var reg = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
             if (url.match(reg)) {
                 generateImage(url);
